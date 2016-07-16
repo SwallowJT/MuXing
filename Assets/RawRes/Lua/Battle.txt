@@ -1,0 +1,79 @@
+﻿
+local ModuleName = ModulesLib.BATTLE;--所属模块名
+local SelfPanel = nil;--模块界面
+local ViewManager = nil;--视图管理
+local ModelManager = nil;--数据管理
+local Mediator = nil;--消息管理
+
+local gHp = nil;
+local gScore = nil;
+local gDistance = nil;
+
+--模块初始化
+function Battle_OnInit(BaseUIView)
+	SelfPanel   = BaseUIView.gameObject;
+	SelfPanel.transform.localPosition = Vector3(0,0,0);
+	ViewManager = BaseUIView;
+	ModelManager = UIManager.Instance:GetDataModelByModuleName(ModuleName);
+	Battle_BindUI();
+	Battle_AddEvent();
+	Battle_Init();
+end
+
+--绑定UI
+function Battle_BindUI()
+	gHp = GetChildComponent(SelfPanel, "HP/Num", false, "Text");
+	gScore = GetChildComponent(SelfPanel, "Score/Num", false, "Text");
+	gDistance = GetChildComponent(SelfPanel, "Distance/Num", false, "Text");
+end
+
+function Battle_Init() 
+	gHp.text = DataManager.HP;
+	gScore.text = DataManager.Score;
+	gDistance.text = DataManager.Distance;
+end
+
+--绑定事件
+function Battle_AddEvent()
+	-- local btnPause = GetChild(SelfPanel, "Pause", false);
+	-- Battle_AddBtn(btnPause);
+	-- local btnExit = GetChild(SelfPanel, "Exit", false);
+	-- Battle_AddBtn(btnExit);
+end
+
+function Battle_AddBtn(btn)
+	UIEventListener.AddEventListener(btn, UIEventType.CLICK, Battle_OnClick);
+end
+
+--事件监听
+function Battle_OnClick(GameObject)
+	local TargetName = GameObject.name;
+	-- print("Click : "..TargetName);
+	
+	-- if TargetName == "Pause" then
+
+	-- elseif TargetName == "Exit" then
+	-- 	GameFSM.Instance:ChangeState(GameState.Login);
+	-- end
+end
+
+--显示界面调用
+function Battle_OnShowView()
+
+end
+
+--关闭界面调用
+function Battle_OnCloseView()
+
+end
+
+--收到消息时调用
+function Battle_OnReceive(InfoName,Data)
+
+end
+
+--注册消息时调用
+function Battle_OnRegister(BaseMediator)
+	Mediator = BaseMediator;
+end
+

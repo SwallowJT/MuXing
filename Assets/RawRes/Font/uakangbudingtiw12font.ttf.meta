@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 6ee7a2c44b72e8346a1257f37d296d4d
+timeCreated: 1468395148
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 2
+  fontSize: 16
+  forceTextureCase: 3
+  characterSpacing: 1
+  characterPadding: 0
+  includeFontData: 1
+  use2xBehaviour: 0
+  fontNames: []
+  fallbackFontReferences: []
+  customCharacters: "\u5927\u4F60\u60A8\u597D"
+  fontRenderingMode: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

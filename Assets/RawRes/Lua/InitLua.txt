@@ -1,0 +1,17 @@
+--Desc: 导入需要的C#类
+--第一个被加载的lua脚本
+
+luanet.load_assembly("Assembly-CSharp")
+luanet.load_assembly('UnityEngine')
+Vector2 = luanet.import_type('UnityEngine.Vector2')
+Vector3 = luanet.import_type('UnityEngine.Vector3')
+ProtocolInfo = luanet.import_type("ProtocolInfo");
+GameTool = luanet.import_type("GameTool");
+ModulesLib = luanet.import_type("ModulesLib");
+UIManager = luanet.import_type("UIManager");
+UIEventType     = luanet.import_type("UIEventType");
+UIEventListener = luanet.import_type("UIEventListener");
+SceneManager = luanet.import_type("UnityEngine.SceneManagement.SceneManager");
+MySceneManager = luanet.import_type("MySceneManager");
+DataManager = luanet.import_type("DataManager");
+GameFSM = luanet.import_type("GameFSM");

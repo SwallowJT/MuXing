@@ -1,0 +1,62 @@
+﻿
+local ModuleName = ModulesLib.MAIN;--所属模块名
+local SelfPanel = nil;--模块界面
+local ViewManager = nil;--视图管理
+local ModelManager = nil;--数据管理
+local Mediator = nil;--消息管理
+
+--模块初始化
+function Main_OnInit(BaseUIView)
+	SelfPanel   = BaseUIView.gameObject;
+	ViewManager = BaseUIView;
+	ModelManager = UIManager.Instance:GetDataModelByModuleName(ModuleName);
+	Main_BindUI();
+	Main_AddEvent();
+
+	SelfPanel.transform.localPosition = Vector3(0,0,0);
+end
+
+--绑定UI
+function Main_BindUI()
+
+end
+
+--绑定事件
+function Main_AddEvent()
+	local btnBattle = GetChild(SelfPanel, "Battle", false);
+	Main_AddBtn(btnBattle);
+end
+
+function Main_AddBtn(btn)
+	UIEventListener.AddEventListener(btn, UIEventType.CLICK, Main_OnClick);
+end
+
+--事件监听
+function Main_OnClick(GameObject)
+	local TargetName = GameObject.name;
+
+	if TargetName == "Battle" then
+		MySceneManager.Instance:ChangeScene("Main");
+	end
+end
+
+--显示界面调用
+function Main_OnShowView()
+
+end
+
+--关闭界面调用
+function Main_OnCloseView()
+
+end
+
+--收到消息时调用
+function Main_OnReceive(InfoName,Data)
+
+end
+
+--注册消息时调用
+function Main_OnRegister(BaseMediator)
+	Mediator = BaseMediator;
+end
+

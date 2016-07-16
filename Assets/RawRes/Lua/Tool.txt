@@ -1,0 +1,16 @@
+--Desc: 一些常用的工具函数
+--第二个被导入
+
+function GetChild(parent, child, isDepth)
+	if isDepth == nil then isDepth = false end;
+
+	return GameTool.GetChildByName(parent, child, isDepth);
+end
+
+function GetChildComponent(parent, child, isDepth, component) 
+	return GetChild(parent, child, isDepth):GetComponent(component);
+end
+
+function Send(module, infoType, data)
+	UIManager.Instance:SendNotification(module, infoType, data);
+end
